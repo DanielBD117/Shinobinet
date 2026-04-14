@@ -1,2 +1,0 @@
-# Shinobi.net
-Pagina Web
