@@ -1,10 +1,24 @@
+/* ==========================================================================
+   ESTILOS GENERALES (BODY Y FONDO)
+   ========================================================================== */
 body {
-    background-color: #0a0a0a;
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
+                url('../img/fondo.webp'); /* Asegúrate de que la ruta sea correcta */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #0a0a0a; 
+    
     color: #ffffff;
     font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
 }
 
-/* NAVBAR */
+/* ==========================================================================
+   COMPONENTES DE NAVEGACIÓN
+   ========================================================================== */
 .navbar {
     background-color: #000;
     border-bottom: 2px solid #ff1a1a;
@@ -15,23 +29,83 @@ body {
     font-weight: bold;
 }
 
-/* LOGO */
 .logo {
     width: 40px;
     margin-right: 10px;
 }
 
-/* TITULOS */
-h1,
-h2,
-h3 {
+/* ==========================================================================
+   ELEMENTOS DE FORMULARIO (INPUTS, SELECTS, BOTONES)
+   ========================================================================== */
+.form-control,
+.form-select {
+    background-color: #111;
+    color: white;
+    border: 1px solid #ff1a1a;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: #1a1a1a;
+    border-color: #ff1a1a;
+    box-shadow: 0 0 10px rgba(255, 26, 26, 0.5);
+    color: white;
+    outline: none;
+}
+
+::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-custom {
+    background-color: #ff1a1a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    transition: 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: #990000;
+    box-shadow: 0 0 15px rgba(255, 26, 26, 0.6);
+    color: white;
+}
+
+/* ==========================================================================
+   TIPOGRAFÍA Y CONTENEDORES
+   ========================================================================== */
+h1, h2, h3 {
     color: #ff1a1a;
     margin-bottom: 20px;
 }
 
-/* CARDS */
+.container {
+    margin-top: 40px;
+}
+
+/* ==========================================================================
+   NUEVOS ESTILOS: TARJETA DE FORMULARIO (CALIFICACIONES/REGISTRO)
+   ========================================================================== */
+.form-card {
+    background-color: rgba(17, 17, 17, 0.9); /* Casi negro, muy elegante */
+    border: 1px solid #ff1a1a;
+    border-radius: 15px;
+    max-width: 450px;
+    width: 100%;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(255, 26, 26, 0.2);
+}
+
+.form-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Efecto para las tarjetas de contenido si usas imágenes de juegos */
 .card {
-    background-color: #ffffff;
+    background-color: #151515;
     border: 1px solid #ff1a1a;
     border-radius: 10px;
     transition: 0.3s;
@@ -40,28 +114,4 @@ h3 {
 .card:hover {
     transform: scale(1.03);
     border-color: #ffffff;
-}
-
-/* BOTONES */
-.btn-custom {
-    background-color: #ff1a1a;
-    color: white;
-    border: none;
-}
-
-.btn-custom:hover {
-    background-color: #990000;
-}
-
-/* INPUTS */
-.form-control,
-.form-select {
-    background-color: #111;
-    color: white;
-    border: 1px solid #ff1a1a;
-}
-
-/* ESPACIADO */
-.container {
-    margin-top: 40px;
 }
