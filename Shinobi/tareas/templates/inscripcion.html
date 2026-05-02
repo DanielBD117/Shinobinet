@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+.bg-auth {
+    background: url("https://images.unsplash.com/photo-1549060279-7e168fcee0c2") no-repeat center center;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.overlay-auth {
+    background: rgba(0,0,0,0.75);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-card {
+    background: rgba(0,0,0,0.8);
+    padding: 40px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 0 30px rgba(255,0,0,0.3);
+    color: white;
+}
+</style>
+
+<div class="bg-auth">
+    <div class="overlay-auth">
+
+        <div class="auth-card">
+            <h2 class="text-center mb-4">Crear Cuenta 🔥</h2>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button class="btn btn-danger w-100 mt-3">
+                    Registrarse
+                </button>
+            </form>
+
+            {% if error %}
+                <p class="text-danger mt-3 text-center">{{ error }}</p>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

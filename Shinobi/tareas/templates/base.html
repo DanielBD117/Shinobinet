@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+/* 🔥 NAVBAR */
+.custom-navbar {
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+}
+
+.navbar a {
+    color: white !important;
+}
+
+.navbar a:hover {
+    color: #ff1e1e !important;
+}
+
+/* 🔥 CARRUSEL */
+.carousel-item {
+    height: 100vh;
+    position: relative;
+}
+
+.carousel-item img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Oscurecer imagen */
+.carousel-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 1;
+}
+
+/* Texto encima */
+.carousel-caption {
+    z-index: 2;
+    bottom: 30%;
+}
+
+.carousel-caption h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+.carousel-caption p {
+    font-size: 1.2rem;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- 🔥 NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="/">
+            Fit<span style="color:#ff1e1e;">Life</span>
+        </a>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a href="{% url 'home' %}" class="nav-link">Inicio</a>
+                </li>
+
+                {% if user.is_authenticated %}
+
+                    <li class="nav-item">
+                        <a href="{% url 'tareas' %}" class="nav-link">Tareas</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{% url 'tareas_completadas' %}" class="nav-link">Completadas</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{% url 'crear_tareas' %}" class="nav-link">Crear</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{% url 'logout' %}" class="nav-link text-danger">Cerrar sesión</a>
+                    </li>
+
+                {% else %}
+
+                    <li class="nav-item">
+                        <a href="{% url 'login' %}" class="nav-link">Iniciar sesión</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{% url 'inscripcion' %}" class="nav-link text-danger">Registrarse</a>
+                    </li>
+
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- 🔥 CONTENIDO -->
+{% block content %}
+{% endblock %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
