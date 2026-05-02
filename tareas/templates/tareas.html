@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="container d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+
+    <div class="glass-card">
+
+        <!-- 🔥 CAJA OSCURA -->
+        <div class="card bg-dark bg-opacity-75 text-white shadow-lg border-0 p-4 rounded-4">
+
+            <!-- 🏋️ TITULO -->
+            <h1 class="text-center display-5 fw-bold text-warning mb-3">
+                {{ titulo }}
+            </h1>
+
+            <!-- 👤 USUARIO -->
+            <h3 class="text-center mb-2">
+                Bienvenido {{ user.username }} 💪
+            </h3>
+
+            <!-- 📊 PLAN -->
+            {% if perfil %}
+            <p class="text-center fs-5">
+                Plan actual: 
+                <span class="badge bg-warning text-dark">
+                    {{ perfil.plan|title }}
+                </span>
+            </p>
+
+            {% if perfil.plan == 'basico' %}
+                <p class="text-info text-center">Acceso básico al gimnasio</p>
+
+            {% elif perfil.plan == 'premium' %}
+                <p class="text-success text-center">Rutinas personalizadas 🏋️</p>
+
+            {% elif perfil.plan == 'vip' %}
+                <p class="text-danger text-center">Entrenador personal 🔥</p>
+            {% endif %}
+            {% endif %}
+
+            <!-- 📋 LISTA -->
+            <ul class="list-group mt-4">
+
+                {% for actividad in tareas %}
+                <a class="list-group-item list-group-item-action bg-dark text-white border-secondary mb-2 rounded-3 shadow-sm"
+                   href="{% url 'detalles_tareas' actividad.id %}">
+
+                    <div class="d-flex justify-content-between">
+                        <h5 class="fw-bold mb-0">
+                            {{ actividad.titulo }}
+                        </h5>
+
+                        {% if actividad.importante %}
+                            <span class="badge bg-success">🔥</span>
+                        {% endif %}
+                    </div>
+
+                    <p class="mb-1 text-light">
+                        {{ actividad.descripcion }}
+                    </p>
+
+                    <small class="text-muted">
+                        {{ actividad.f_completada|date:"M j Y H:i" }}
+                    </small>
+
+                </a>
+
+                {% empty %}
+                <li class="list-group-item text-center bg-dark text-white">
+                    No tienes rutinas aún 💪
+                </li>
+                {% endfor %}
+
+            </ul>
+
+            <!-- ➕ BOTON -->
+            <a href="{% url 'crear_tareas' %}" class="btn btn-warning mt-3 fw-bold">
+                + Nueva Rutina
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+{% endblock %}
